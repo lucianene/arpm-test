@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 3 JS - Lucian Ene</title>
+</head>
+<body>
+    <div id="div1">Hello World</div>
+    <div id="div2"></div>
+    <button id="myButton">Click me</button>
+
+    <script type="text/javascript">
+    /** 
+    Modify a JavaScript function to animate the phrase "Hello World" character by character, moving each from div1 to div2 on a webpage. For this challenge, odd-indexed characters (considering the first character as index 0) should move with a delay calculated by 4 + index seconds. Even-indexed characters should only move one second after all adjacent odd-indexed characters have moved.
+    */
+    var button = document.getElementById("myButton");
+    button.addEventListener("click", async function() {
+      var div1 = document.getElementById("div1");
+      var div2 = document.getElementById("div2");
+      var text = div1.innerText;
+      div1.innerHTML = ''; // Prepare div1 for the span elements
+
+      // Create a span for each character in div1
+      text.split('').forEach(char => {
+        let span = document.createElement('span');
+        span.textContent = char;
+        div1.appendChild(span);
+      });
+
+      // sleep function for delaying
+      function sleep(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+      }
+
+      // Move character function
+      async function moveChar(span, delay) {
+        await sleep(delay);
+        div2.innerText += span.textContent; // Move the character to div2
+        span.style.display = 'none'; // Hide the span in div1
+      }
+
+      // Move characters based on their index
+      const spans = div1.querySelectorAll('span');
+      for (let i = 0; i < spans.length; i++) {
+        let delay;
+        if (i % 2 === 0) {
+          // For even-indexed characters, including the first character
+          delay = 1000;
+        } else {
+          // For odd-indexed characters
+          delay = i * 1000;
+        }
+        await moveChar(spans[i], delay);
+      }
+    });
+    </script>
+</body>
+</html>

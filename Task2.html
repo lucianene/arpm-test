@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task2 ARPM - Lucian Ene</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
+</head>
+<body>
+<style>
+body, html {
+    background: black;
+    margin: 0;
+    padding: 0;
+    color: white;
+}
+#app {
+    padding: 200px;
+    text-align: center;
+}
+.swing-circle-effect {
+    display: inline-block;
+    font-size: 3em;
+    font-family: "Source Sans 3";
+    position: relative;
+    font-weight: 500;
+}
+.swing-circle-effect:after {
+    content: " ";
+    position: absolute;
+    background: black;
+    mix-blend-mode: difference;
+    fill: transparent;
+    filter: invert(1);
+    border-radius: 50%;
+    left: 0;
+    top: 0;
+    width: 1.5em;
+    height: 1.5em;
+    animation: 2s ease-in-out infinite alternate swingAnimation;
+}
+@keyframes swingAnimation {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(calc(8em - 100%));
+  }
+}
+</style>
+
+<div id="app">
+    <div class="swing-circle-effect">Welcome to ARPM!</div>
+</div>
+
+</body>
+</html>
